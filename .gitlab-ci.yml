@@ -1,0 +1,86 @@
+before_script:
+  - mix local.hex --force
+  - mix local.rebar --force
+  - mix deps.get
+
+stages:
+  - test
+  - build
+  - deploy
+  - migrate
+
+test:
+  stage: test
+  script:
+    - MIX_ENV=test mix ecto.migrate
+    - mix test
+  only:
+    - branches
+  tags:
+    - IP
+    - test
+# Edeliver configs
+build-staging:
+  stage: build
+  script:
+    - mix edeliver build release
+  only:
+    - staging
+  tags:
+    - IP
+deploy-staging:
+  stage: deploy
+  script:
+    - mix edeliver deploy release to staging --version=0.18.7
+    # - mix edeliver restart staging #Comment this since we are now using systemd
+  environment:
+    name: staging
+    url: http://payorlink-ip-staging.medilink.com.ph/
+  only:
+    - staging
+  tags:
+    - IP
+migrate-staging:
+  stage: migrate
+  script:
+    - mix edeliver migrate staging
+  only:
+    - staging
+  tags:
+    - IP
+# K8 configs
+# build-staging:
+#   stage: build
+#   script:
+#     - docker-compose build ip-build
+#     - docker-compose build payorlink
+#   only:
+#     - staging
+#   tags:
+#     - IP
+
+# deploy-staging:
+#   stage: deploy
+#   only:
+#     - staging
+#   environment:
+#     name: staging
+#     url: http://payorlink-ip-staging.medilink.com.ph/
+#   script:
+#     - gcloud docker -- push asia.gcr.io/silver-approach-172802/payorlink:0.5.0 # Manually update this version
+#     - kubectl apply -f scripts/k8/payorlink.yml
+#   tags:
+#     - IP
+
+# migrate-staging:
+#   stage: migrate
+#   only:
+#     - staging
+#   script:
+#     - docker run --env-file ~/.env asia.gcr.io/silver-approach-172802/ip-build scripts/build/migrate.sh
+#     # If you need to reset DB
+#     # - kubectl delete -f scripts/k8/payorlink.yml
+#     # - docker run --env-file ~/.env asia.gcr.io/silver-approach-172802/ip-build scripts/build/migrate-with-seed.sh
+#     # - kubectl apply -f scripts/k8/payorlink.yml
+#   tags:
+#     - IP

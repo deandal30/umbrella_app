@@ -1,0 +1,20 @@
+* [31mf16c243[m -[33m (HEAD -> master, origin/master)[m Apply Umbrella App [32m(5 hours ago) [1;34m<Daniel Eduard Andal>[m
+* [31mf0fdc18[m -[33m (test)[m Setup Design [32m(9 hours ago) [1;34m<Daniel Eduard Andal>[m
+*   [31m644b57f[m -[33m (tag: MemberLink_v0.4.2)[m Merge branch '614-batch-enrollment-corp-ifg-in-urg-with-additional-validations' into 'master' [32m(34 hours ago) [1;34m<israel dela cruz>[m
+[32m|[m[33m\[m  
+[32m|[m *   [31m9e6954f[m -[33m[m Merge branch 'master' into 614-batch-enrollment-corp-ifg-in-urg-with-additional-validations [32m(2 days ago) [1;34m<Anton Santiago>[m
+[32m|[m [34m|[m[35m\[m  
+[32m|[m * [35m|[m [31m211baec[m -[33m[m updated batch enrollment validations [32m(2 days ago) [1;34m<Anton Santiago>[m
+* [35m|[m [35m|[m   [31m5a447d1[m -[33m[m Merge branch 'fix-memberlink-registration' into 'master' [32m(35 hours ago) [1;34m<Anton Santiago>[m
+[36m|[m[1;31m\[m [35m\[m [35m\[m  
+[36m|[m * [35m|[m [35m|[m [31mbaf2240[m -[33m[m fixed memberlink registration [32m(35 hours ago) [1;34m<gleniel>[m
+* [1;31m|[m [35m|[m [35m|[m   [31mb1d3c37[m -[33m[m Merge branch 'api_validate_loa_fixes' into 'master' [32m(35 hours ago) [1;34m<Anton Santiago>[m
+[1;31m|[m[1;33m\[m [1;31m\[m [35m\[m [35m\[m  
+[1;31m|[m [1;33m|[m[1;31m/[m [35m/[m [35m/[m  
+[1;31m|[m[1;31m/[m[1;33m|[m [35m|[m [35m|[m   
+[1;31m|[m * [35m|[m [35m|[m [31m3fae2c6[m -[33m[m Fixed minor bug [32m(35 hours ago) [1;34m<Joeffrey Garcia>[m
+* [1;33m|[m [35m|[m [35m|[m [31m5f5e88f[m -[33m (tag: Payorlink_v0.18.7)[m Bump MemberLink v0.4.2 [32m(2 days ago) [1;34m<Abby Mae Bahatan>[m
+* [1;33m|[m [35m|[m [35m|[m [31mc393720[m -[33m[m Bump PayorLink to 0.18.7 [32m(2 days ago) [1;34m<Janna Dela Cruz>[m
+* [1;33m|[m [35m|[m [35m|[m   [31m0c471ec[m -[33m[m Merge branch '619-integrate-provider-api-post-loa-insert-in-authorization-request' into 'master' [32m(2 days ago) [1;34m<Janna Mamer Dela Cruz>[m
+[1;34m|[m[1;35m\[m [1;33m\[m [35m\[m [35m\[m  
+[1;34m|[m * [1;33m|[m [35m|[m [35m|[m [31me2bf2b9[m -[33m[m credo fixes [32m(2 days ago) [1;34m<Janna Dela Cruz>[m

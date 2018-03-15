@@ -1,0 +1,33 @@
+<div><img src="/images/logo.png"></div>
+<div name="Authorize" class="ui form mt-3">
+
+  <div class="field">
+    <h1>Will you authorize <%= @client.name %> the following scopes?</h1>
+
+    <hr />
+    <ul>
+      <%= for scope <- @client.scopes do %>
+        <div class="ui card">
+          <div class="content">
+            <a class="header"><%= scope.name %></a>
+            <div class="description">
+              <%= scope.description %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </ul>
+
+    <hr />
+
+    <%= link to: session_path(@conn, :accept, @consent, scopes: @scopes), class: "ui button" do %>
+      Accept
+    <% end %>
+    <%= link to: session_path(@conn, :deny, @consent, scopes: @scopes), class: "ui button red" do %>
+      Deny
+    <% end %>
+    <%= link to: session_path(@conn, :logout, consent: @consent), class: "ui button orange" do %>
+      Logout
+    <% end %>
+  </div>
+</div>

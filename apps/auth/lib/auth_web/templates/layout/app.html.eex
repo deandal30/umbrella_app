@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Medilink</title>
+    <link rel="icon" href="img/favicon.jpg" type="/images/x-icon"/>
+    <link rel="shortcut icon" href="img/favicon.jp" type="/images/x-icon"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <script src=""></script>
+
+    <meta property="og:site_name" content="Accountlink">
+    <meta property="og:url" content="https://authlink-ip-staging.medilink.com.ph">
+    <meta property="og:title" content="<%= gettext "Manage your account in Maxicare." %>">
+    <meta property="og:description" content="<%= gettext "Easily manage your members in your account on Maxicare." %>">
+    <meta property="og:image" content="<%= static_url(@conn, "/images/OG_Facebook.png") %>" />
+    <meta property="og:type" content="website">
+  </head>
+  <body>
+    <div class="login-wrapper">
+      <div class="ui container">
+        <div class="ui grid">
+
+          <div class="row">
+
+            <div class="six wide computer column">
+              <div class="medilink-logo">
+                <img src="/images/medilink-smile.png">
+              </div>
+            </div>
+
+            <div class="ten wide computer column">
+              <%= render @view_module, @view_template, assigns %>
+            </div>
+
+          </div><!-- row ends here -->
+
+        </div><!-- grid ends here-->
+      </div><!-- container ends here -->
+
+    </div><!-- login-wrapper ends here -->
+
+    </div> <!-- .pusher closed -->
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>
+
+<%
+  info = get_flash(@conn, :info)
+  error = get_flash(@conn, :error)
+
+  error =
+    if error == "Invalid Login! Please try again." || error == "You must be signed in to access that page." do
+      false
+    else
+      error
+    end
+%>
+
+<%= if info do %>
+  <script type="text/javascript">
+    $(function() {
+      alertify.success('<i class="close icon"></i><%= info %>')
+    });
+  </script>
+<% end %>
+
+<%= if error do %>
+  <script type="text/javascript">
+    $(function() {
+      alertify.error('<i class="close icon"></i><%= error %>')
+    });
+  </script>
+<% end %>

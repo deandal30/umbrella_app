@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>RegistrationLink</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+  </head>
+
+  <body>
+    
+
+      <div class="main-wrapper">
+        <div class="pusher">
+          <%= render @view_module, @view_template, assigns %>
+        </div>
+      </div>
+
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script>
+        $(document).ready(function(){
+          $('.modal-open-main').click(function(){
+            $('.ui.modal').modal('show');
+          });
+
+          alert(123)
+  // fix menu when passed
+  $('.masthead')
+    .visibility({
+      once: false,
+      onBottomPassed: function() {
+        $('.fixed.menu').transition('fade in');
+      },
+      onBottomPassedReverse: function() {
+        $('.fixed.menu').transition('fade out');
+      }
+    })
+  ;
+
+  // create sidebar and attach to menu open
+  $('.ui.sidebar')
+    .sidebar('attach events', '.toc.item')
+  ;
+        });
+    </script>
+  </body>
+</html>
+
+
+<%
+info = get_flash(@conn, :info)
+error = get_flash(@conn, :error)
+%>
+<%= if info do %>
+  <script type="text/javascript">
+    $(function() {
+      alertify.success('<i class="close icon"></i><%= info %>')
+    });
+  </script>
+<% end %>
+<%= if error do %>
+  <script type="text/javascript">
+    $(function() {
+      alertify.error('<i class="close icon"></i><%= error %>')
+    });
+  </script>
+<% end %>
